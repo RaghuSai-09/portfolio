@@ -11,7 +11,7 @@ const loadingMessages = [
   "Almost there..."
 ];
 
-export default function LoadingScreen({ onLoadingComplete }: readonly { onLoadingComplete: () => void }) {
+export default function LoadingScreen({ onLoadingComplete }: { onLoadingComplete: () => void }) {
   const [progress, setProgress] = useState(0);
   const [messageIndex, setMessageIndex] = useState(0);
   const [particles, setParticles] = useState<Array<{x: number; y: number; delay: number}>>([]);
