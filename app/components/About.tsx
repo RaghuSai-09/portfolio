@@ -17,7 +17,7 @@ const techStack = [
 const stats = [
   { value: '3+', label: 'Years Experience' },
   { value: '95%', label: 'ML Accuracy' },
-  { value: '500+', label: 'Users Served' },
+  { value: '5000+', label: 'Users Served' },
   { value: '3.93', label: 'GPA' },
 ];
 

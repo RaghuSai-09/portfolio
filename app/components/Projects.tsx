@@ -113,6 +113,27 @@ const projects = [
     link: 'https://dalley.netlify.app/',
     github: 'https://github.com/raghusai-09',
   },
+  {
+    title: 'TaskFlow AI',
+    company: 'Cloudflare Internship Project',
+    status: 'LIVE',
+    description: 'Smart task tracking application leveraging Cloudflare\'s edge computing stack with AI-powered analysis. Automatically analyzes priority, categorizes tasks, estimates time, and generates subtasks using Workers AI.',
+    architecture: {
+      pipeline: ['Task Creation', 'AI Analysis', 'Workflow Processing', 'D1 Storage', 'Real-time Updates'],
+      models: ['Llama 3.3 70B', 'Workers AI', 'Task Prioritization', 'Category Classification'],
+      infrastructure: ['Cloudflare Workers', 'Durable Objects', 'Workflows', 'D1 SQLite', 'Hono Framework']
+    },
+    metrics: [
+      { label: 'Cold Start', value: '~5ms', icon: FiZap, color: 'text-green-400' },
+      { label: 'AI Response', value: '<3s', icon: FiCpu, color: 'text-cyan-400' },
+      { label: 'DB Query', value: '<10ms', icon: FiDatabase, color: 'text-purple-400' },
+      { label: 'Edge Coverage', value: '300+', icon: FiActivity, color: 'text-blue-400' }
+    ],
+    tech: ['TypeScript', 'Cloudflare Workers', 'Workers AI', 'D1', 'Tailwind CSS'],
+    gradient: 'from-amber-500 to-orange-500',
+    link: 'https://taskflow-ai.raghusai-kosana.workers.dev/',
+    github: 'https://github.com/RaghuSai-09/cf_ai_taskflow-ai',
+  },
 ];
 
 export default function Projects() {

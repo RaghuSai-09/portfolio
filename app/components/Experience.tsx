@@ -10,7 +10,7 @@ const experiences = [
     period: 'Jul 2024 - Dec 2024',
     location: 'Remote',
     achievements: [
-      'Architected and deployed an AI-powered medical chatbot using Microsoft Bot Framework, Python, FastAPI, and Azure Bot Service, processing 500+ patient queries daily with 40% faster response times',
+      'Architected and deployed an AI-powered medical chatbot using Microsoft Bot Framework, Python, FastAPI, and Azure Bot Service, processing 50k+ patient queries daily with 40% faster response times',
       'Implemented advanced NLP pipelines using spaCy, NLTK, and transformer models (BERT) for intent classification and entity recognition, achieving 30% improvement in semantic accuracy and 92% user satisfaction rate',
       'Engineered automated ETL data pipelines with Python, SQL Server, and Azure Data Factory to extract conversation analytics, reducing manual reporting overhead by 10+ hours/week and enabling real-time performance monitoring',
       'Integrated RESTful APIs and WebSockets for real-time communication, implementing OAuth 2.0 authentication and HIPAA-compliant data encryption protocols',
