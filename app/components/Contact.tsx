@@ -113,7 +113,7 @@ export default function Contact() {
     {
       icon: SiLeetcode,
       label: 'LeetCode',
-      link: 'https://leetcode.com/raghusai',
+      link: 'https://leetcode.com/u/raghusai_kosana/',
       color: 'hover:text-yellow-400',
     },
   ];
