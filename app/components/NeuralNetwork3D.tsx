@@ -107,6 +107,7 @@ function NetworkNodes() {
             count={linePositions.length / 3}
             array={linePositions}
             itemSize={3}
+            args={[linePositions, 3]}
           />
         </bufferGeometry>
         <lineBasicMaterial
