@@ -1,415 +1,152 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FiMail, FiLinkedin, FiGithub, FiMapPin, FiPhone, FiDownload, FiSend, FiCheck, FiCopy, FiUser, FiMessageSquare, FiAlertCircle } from 'react-icons/fi';
-import { SiLeetcode } from 'react-icons/si';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { FiMail, FiLinkedin, FiDownload, FiArrowUpRight, FiSend, FiCheck } from 'react-icons/fi';
+
+const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const available = [true, true, true, true, true, false, false];
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-  const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-  const [copied, setCopied] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const formRef = useRef<HTMLFormElement>(null);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormStatus('sending');
-    setErrorMessage('');
-
+    if (!formRef.current) return;
+    setSending(true);
+    setError('');
     try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
-
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          name: formData.name,
-          email: formData.email,
-          title: formData.subject,
-          message: formData.message,
-        },
-        publicKey
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        formRef.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
-
-      setFormStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      setTimeout(() => setFormStatus('idle'), 5000);
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      setFormStatus('error');
-      setErrorMessage('Failed to send message. Please try emailing directly.');
-      
-      setTimeout(() => setFormStatus('idle'), 5000);
+      setSent(true);
+      formRef.current.reset();
+    } catch {
+      setError('Failed to send. Try emailing me directly.');
+    } finally {
+      setSending(false);
     }
   };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const copyEmail = () => {
-    navigator.clipboard.writeText('kosanaraghusai@gmail.com');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const getButtonClassName = () => {
-    const baseClasses = 'w-full py-4 px-6 rounded-xl font-semibold text-white transition-all duration-300 flex items-center justify-center gap-3';
-    
-    switch (formStatus) {
-      case 'success':
-        return `${baseClasses} bg-green-500 hover:bg-green-600`;
-      case 'error':
-        return `${baseClasses} bg-red-500 hover:bg-red-600`;
-      case 'sending':
-        return `${baseClasses} bg-gray-500 cursor-wait`;
-      default:
-        return `${baseClasses} bg-linear-to-r from-cyan-500 to-purple-500 hover:shadow-lg hover:shadow-cyan-500/50`;
-    }
-  };
-  const contactInfo = [
-    {
-      icon: FiMail,
-      label: 'Email',
-      value: 'kosanaraghusai@gmail.com',
-      link: 'mailto:kosanaraghusai@gmail.com',
-    },
-    {
-      icon: FiPhone,
-      label: 'Phone',
-      value: '(513) 338-9801',
-      link: 'tel:+15133389801',
-    },
-    {
-      icon: FiMapPin,
-      label: 'Location',
-      value: 'Cincinnati, OH',
-      link: null,
-    },
-  ];
-
-  const socialLinks = [
-    {
-      icon: FiGithub,
-      label: 'GitHub',
-      link: 'https://github.com/raghusai-09',
-      color: 'hover:text-purple-400',
-    },
-    {
-      icon: FiLinkedin,
-      label: 'LinkedIn',
-      link: 'https://www.linkedin.com/in/raghusai09/',
-      color: 'hover:text-cyan-400',
-    },
-    {
-      icon: SiLeetcode,
-      label: 'LeetCode',
-      link: 'https://leetcode.com/u/raghusai_kosana/',
-      color: 'hover:text-yellow-400',
-    },
-  ];
 
   return (
-    <section id="contact" className="min-h-screen py-20 px-4 relative">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4 gradient-text">Let&apos;s Connect</h2>
-          <div className="w-20 h-1 bg-linear-to-r from-cyan-500 to-purple-500 mx-auto mb-4"></div>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            I&apos;m currently open to ML Engineer roles and exciting collaboration opportunities. 
-            Let&apos;s build something amazing together!
+    <section id="contact" className="py-24 md:py-32 px-6">
+      <div className="max-w-3xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="mb-12">
+          <p className="section-label mb-3">Connect</p>
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground tracking-tight">Get in touch</h2>
+          <div className="editorial-rule mt-6 w-24" />
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }} className="space-y-5 mb-14">
+          <p className="text-base text-foreground/80 leading-[1.8] font-medium">
+            I&apos;m looking for full-time <span className="highlight-text">ML Engineer</span> or <span className="highlight-text">NLP Engineer</span> roles starting mid-2025.
+            The work that excites me most sits at the intersection of language understanding and production systems.
+          </p>
+          <p className="text-base text-secondary leading-[1.8]">
+            My Master&apos;s at UC deepened my understanding of distributed systems and advanced ML,
+            and my production experience means I can ship, not just prototype. If you&apos;re building something where language matters, I&apos;d like to hear about it.
           </p>
         </motion.div>
 
-        {/* Availability Status */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="glass rounded-3xl p-8 mb-12 text-center"
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-xl font-semibold text-green-400">Available for Opportunities</span>
+        {/* Availability */}
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }} viewport={{ once: true }} className="mb-14">
+          <p className="section-label mb-4">Availability</p>
+          <div className="flex gap-2">
+            {days.map((day, i) => (
+              <div key={day} className={`w-11 h-11 flex items-center justify-center text-[0.7rem] font-mono transition-colors ${available[i] ? 'availability-active' : 'availability-inactive'}`}>
+                {day}
+              </div>
+            ))}
           </div>
-          <p className="text-gray-400">
-            Currently pursuing Master&apos;s in Computer Science at University of Cincinnati • Open to full-time ML Engineer roles
-          </p>
+          <p className="text-[0.75rem] text-muted mt-3">Open to conversations Monday through Friday</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <h3 className="text-3xl font-bold mb-8 text-gray-200">Get In Touch</h3>
-            
-            {contactInfo.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="glass rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 group"
-                >
-                  {item.link ? (
-                    <a href={item.link} className="flex items-center gap-4">
-                      <div className="p-3 bg-linear-to-br from-cyan-500/20 to-purple-500/20 rounded-xl group-hover:from-cyan-500/30 group-hover:to-purple-500/30 transition-all">
-                        <Icon size={24} className="text-cyan-400" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-400">{item.label}</p>
-                        <p className="text-lg text-gray-200 group-hover:text-cyan-400 transition-colors">
-                          {item.value}
-                        </p>
-                      </div>
-                    </a>
-                  ) : (
-                    <div className="flex items-center gap-4">
-                      <div className="p-3 bg-linear-to-br from-cyan-500/20 to-purple-500/20 rounded-xl">
-                        <Icon size={24} className="text-cyan-400" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-400">{item.label}</p>
-                        <p className="text-lg text-gray-200">{item.value}</p>
-                      </div>
-                    </div>
-                  )}
-                </motion.div>
-              );
-            })}
+        {/* Contact Form */}
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.25 }} viewport={{ once: true }} className="mb-14">
+          <p className="section-label mb-6">Send a message</p>
+          <form ref={formRef} onSubmit={handleSubmit} className="paper-card p-6 md:p-8 space-y-5">
+            <div className="grid md:grid-cols-2 gap-5">
+              <div>
+                <label htmlFor="from_name" className="block text-[0.75rem] font-mono text-muted tracking-wider uppercase mb-2">Name</label>
+                <input id="from_name" name="from_name" type="text" required className="w-full bg-transparent border-b border-border focus:border-accent text-foreground text-[0.9rem] py-2.5 outline-none transition-colors placeholder:text-muted" placeholder="Your name" />
+              </div>
+              <div>
+                <label htmlFor="reply_to" className="block text-[0.75rem] font-mono text-muted tracking-wider uppercase mb-2">Email</label>
+                <input id="reply_to" name="reply_to" type="email" required className="w-full bg-transparent border-b border-border focus:border-accent text-foreground text-[0.9rem] py-2.5 outline-none transition-colors placeholder:text-muted" placeholder="your@email.com" />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="message" className="block text-[0.75rem] font-mono text-muted tracking-wider uppercase mb-2">Message</label>
+              <textarea id="message" name="message" required rows={4} className="w-full bg-transparent border-b border-border focus:border-accent text-foreground text-[0.9rem] py-2.5 outline-none transition-colors resize-none placeholder:text-muted" placeholder="What would you like to discuss?" />
+            </div>
+            <div className="flex items-center justify-between pt-2">
+              <div>
+                {sent && <p className="text-accent text-[0.8rem] font-mono flex items-center gap-2"><FiCheck size={14} /> Message sent!</p>}
+                {error && <p className="text-red-500 text-[0.8rem] font-mono">{error}</p>}
+              </div>
+              <button type="submit" disabled={sending} className="flex items-center gap-2 bg-foreground text-background px-6 py-2.5 text-[0.8rem] font-mono hover:bg-accent transition-colors disabled:opacity-50 cursor-pointer">
+                <FiSend size={14} />
+                {sending ? 'Sending...' : 'Send message'}
+              </button>
+            </div>
+          </form>
+        </motion.div>
 
-            {/* Resume Download */}
-            <motion.a
-              href="/resume.pdf"
-              download="Raghu_Sai_Kosana_Resume.pdf"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="flex items-center justify-center gap-3 glass rounded-2xl p-6 hover:bg-linear-to-r hover:from-cyan-500/20 hover:to-purple-500/20 transition-all duration-300 group"
-            >
-              <FiDownload size={24} className="text-cyan-400 group-hover:animate-bounce" />
-              <span className="text-lg font-semibold text-gray-200 group-hover:text-cyan-400 transition-colors">
-                Download Resume
+        {/* Contact links */}
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 }} viewport={{ once: true }} className="space-y-3">
+          <a href="mailto:kosanaraghusai@gmail.com" className="paper-card p-5 flex items-center justify-between group">
+            <div className="flex items-center gap-4">
+              <span className="w-10 h-10 flex items-center justify-center border border-border-light group-hover:border-accent group-hover:bg-accent transition-all">
+                <FiMail size={16} className="text-secondary group-hover:text-white transition-colors" />
               </span>
-            </motion.a>
-
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              viewport={{ once: true }}
-              className="flex justify-center gap-6"
-            >
-              {socialLinks.map((social, index) => {
-                const Icon = social.icon;
-                return (
-                  <motion.a
-                    key={social.label}
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.2, y: -5 }}
-                    whileTap={{ scale: 0.9 }}
-                    className={`p-4 glass rounded-xl hover:bg-white/10 transition-all duration-300 ${social.color}`}
-                    title={social.label}
-                  >
-                    <Icon size={28} />
-                  </motion.a>
-                );
-              })}
-            </motion.div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <h3 className="text-3xl font-bold mb-8 text-gray-200">Send Me a Message</h3>
-
-            <motion.form
-              onSubmit={handleSubmit}
-              className="glass rounded-3xl p-8 space-y-6"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              {/* Name Input */}
-              <div className="relative group">
-                <label htmlFor="name" className="text-sm text-gray-400 mb-2 flex items-center gap-2">
-                  <FiUser size={16} />
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-gray-200 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all outline-none group-hover:border-white/20"
-                  placeholder="John Doe"
-                />
+              <div>
+                <p className="text-sm font-medium text-foreground">Email</p>
+                <p className="text-[0.8rem] text-subtle">kosanaraghusai@gmail.com</p>
               </div>
+            </div>
+            <FiArrowUpRight size={16} className="text-muted group-hover:text-accent transition-colors" />
+          </a>
 
-              {/* Email Input */}
-              <div className="relative group">
-                <label htmlFor="email" className="text-sm text-gray-400 mb-2 flex items-center gap-2">
-                  <FiMail size={16} />
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-gray-200 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all outline-none group-hover:border-white/20"
-                  placeholder="john@example.com"
-                />
+          <a href="https://www.linkedin.com/in/raghusai09/" target="_blank" rel="noopener noreferrer" className="paper-card p-5 flex items-center justify-between group">
+            <div className="flex items-center gap-4">
+              <span className="w-10 h-10 flex items-center justify-center border border-border-light group-hover:border-accent group-hover:bg-accent transition-all">
+                <FiLinkedin size={16} className="text-secondary group-hover:text-white transition-colors" />
+              </span>
+              <div>
+                <p className="text-sm font-medium text-foreground">LinkedIn</p>
+                <p className="text-[0.8rem] text-subtle">linkedin.com/in/raghusai09</p>
               </div>
+            </div>
+            <FiArrowUpRight size={16} className="text-muted group-hover:text-accent transition-colors" />
+          </a>
 
-              {/* Subject Input */}
-              <div className="relative group">
-                <label htmlFor="subject" className="text-sm text-gray-400 mb-2 flex items-center gap-2">
-                  <FiMessageSquare size={16} />
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-gray-200 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all outline-none group-hover:border-white/20"
-                  placeholder="Project Collaboration"
-                />
+          <a href="/resume.pdf" download="Raghu_Sai_Kosana_Resume.pdf" className="paper-card p-5 flex items-center justify-between group">
+            <div className="flex items-center gap-4">
+              <span className="w-10 h-10 flex items-center justify-center border border-border-light group-hover:border-accent group-hover:bg-accent transition-all">
+                <FiDownload size={16} className="text-secondary group-hover:text-white transition-colors" />
+              </span>
+              <div>
+                <p className="text-sm font-medium text-foreground">Resume</p>
+                <p className="text-[0.8rem] text-subtle">Download PDF</p>
               </div>
-
-              {/* Message Textarea */}
-              <div className="relative group">
-                <label htmlFor="message" className="text-sm text-gray-400 mb-2 flex items-center gap-2">
-                  <FiMessageSquare size={16} />
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-gray-200 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all outline-none resize-none group-hover:border-white/20"
-                  placeholder="Tell me about your project or opportunity..."
-                />
-              </div>
-
-              {/* Submit Button */}
-              <motion.button
-                type="submit"
-                disabled={formStatus === 'sending'}
-                whileHover={{ scale: formStatus === 'idle' ? 1.02 : 1 }}
-                whileTap={{ scale: formStatus === 'idle' ? 0.98 : 1 }}
-                className={getButtonClassName()}
-              >
-                {formStatus === 'sending' && (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Sending...
-                  </>
-                )}
-                {formStatus === 'success' && (
-                  <>
-                    <FiCheck size={20} />
-                    Message Sent!
-                  </>
-                )}
-                {formStatus === 'error' && (
-                  <>
-                    <FiAlertCircle size={20} />
-                    Failed to Send
-                  </>
-                )}
-                {formStatus === 'idle' && (
-                  <>
-                    <FiSend size={20} />
-                    Send Message
-                  </>
-                )}
-              </motion.button>
-
-              {formStatus === 'success' && (
-                <motion.p
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-green-400 text-sm text-center"
-                >
-                  Thanks! I&apos;ll get back to you soon.
-                </motion.p>
-              )}
-
-              {formStatus === 'error' && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-red-400 text-sm text-center space-y-2"
-                >
-                  <p>{errorMessage}</p>
-                  <a
-                    href="mailto:kosanaraghusai@gmail.com"
-                    className="text-cyan-400 hover:underline inline-flex items-center gap-1"
-                  >
-                    <FiMail size={14} />
-                    kosanaraghusai@gmail.com
-                  </a>
-                </motion.div>
-              )}
-            </motion.form>
-          </motion.div>
-        </div>
+            </div>
+            <FiArrowUpRight size={16} className="text-muted group-hover:text-accent transition-colors" />
+          </a>
+        </motion.div>
 
         {/* Footer */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-20 text-center text-gray-400 text-sm"
-        >
-          <p>© 2026 Raghu Sai Kosana. Built with Next.js, Tailwind CSS & Framer Motion.</p>
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.5, duration: 0.6 }} viewport={{ once: true }} className="mt-24 pt-8 border-t border-border-light">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <p className="text-[0.75rem] text-muted">© 2026 Raghu Sai Kosana</p>
+            <p className="text-[0.75rem] text-muted">Built with Next.js, Tailwind CSS, and Framer Motion</p>
+          </div>
         </motion.div>
       </div>
     </section>

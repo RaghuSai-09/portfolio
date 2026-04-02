@@ -1,212 +1,117 @@
-"use client";
-import { motion } from "framer-motion";
-import {
-  SiPython, SiJavascript, SiTypescript, SiCplusplus, SiHtml5, SiCss3,
-  SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiPostgresql, SiRedux,
-  SiTensorflow, SiPytorch, SiScikitlearn, SiOpencv, SiPandas, SiNumpy, SiKeras,
-  SiGit, SiGithub, SiVercel, SiNetlify, SiTailwindcss, SiStreamlit, SiVuedotjs,
-  SiDocker, SiKubernetes, SiGraphql, SiPostman,
-  SiJenkins, SiFirebase, SiSupabase, SiPrisma, SiSocketdotio, SiJest, SiAngular
-} from "react-icons/si";
-import { FaJava, FaAws } from "react-icons/fa";
+'use client';
 
-const skillCategories = [
-  {
-    title: "Languages",
-    skills: [
-      { icon: SiPython, name: "Python", color: "text-blue-400" },
-      { icon: SiJavascript, name: "JavaScript", color: "text-yellow-400" },
-      { icon: SiTypescript, name: "TypeScript", color: "text-blue-500" },
-      { icon: FaJava, name: "Java", color: "text-red-500" },
-      { icon: SiCplusplus, name: "C++", color: "text-blue-600" },
-      { icon: SiHtml5, name: "HTML5", color: "text-orange-400" },
-      { icon: SiCss3, name: "CSS3", color: "text-blue-400" },
-    ],
-  },
-  {
-    title: "ML & Deep Learning",
-    skills: [
-      { icon: SiTensorflow, name: "TensorFlow", color: "text-orange-400" },
-      { icon: SiPytorch, name: "PyTorch", color: "text-red-500" },
-      { icon: SiKeras, name: "Keras", color: "text-red-400" },
-      { icon: SiScikitlearn, name: "Scikit-learn", color: "text-orange-500" },
-      { icon: SiOpencv, name: "OpenCV", color: "text-green-500" },
-      { icon: SiPandas, name: "Pandas", color: "text-blue-400" },
-      { icon: SiNumpy, name: "NumPy", color: "text-blue-500" },
-    ],
-  },
-  {
-    title: "Frontend Development",
-    skills: [
-      { icon: SiReact, name: "React.js", color: "text-cyan-400" },
-      { icon: SiNextdotjs, name: "Next.js", color: "text-white" },
-      { icon: SiVuedotjs, name: "Vue.js", color: "text-green-400" },
-      { icon: SiAngular, name: "Angular", color: "text-red-500" },
-      { icon: SiRedux, name: "Redux", color: "text-purple-400" },
-      { icon: SiTailwindcss, name: "Tailwind CSS", color: "text-cyan-400" },
-    ],
-  },
-  {
-    title: "Backend & APIs",
-    skills: [
-      { icon: SiNodedotjs, name: "Node.js", color: "text-green-500" },
-      { icon: SiExpress, name: "Express.js", color: "text-gray-400" },
-      { icon: SiGraphql, name: "GraphQL", color: "text-pink-400" },
-      { icon: SiSocketdotio, name: "Socket.io", color: "text-white" },
-      { icon: SiPostman, name: "Postman", color: "text-orange-400" },
-    ],
-  },
-  {
-    title: "Databases & ORMs",
-    skills: [
-      { icon: SiMongodb, name: "MongoDB", color: "text-green-500" },
-      { icon: SiPostgresql, name: "PostgreSQL", color: "text-blue-300" },
-      { icon: SiMysql, name: "MySQL", color: "text-blue-400" },
-      { icon: SiPrisma, name: "Prisma", color: "text-cyan-300" },
-      { icon: SiFirebase, name: "Firebase", color: "text-yellow-500" },
-      { icon: SiSupabase, name: "Supabase", color: "text-green-400" },
-    ],
-  },
-  {
-    title: "DevOps & Cloud",
-    skills: [
-      { icon: SiDocker, name: "Docker", color: "text-blue-400" },
-      { icon: SiKubernetes, name: "Kubernetes", color: "text-blue-500" },
-      { icon: FaAws, name: "AWS", color: "text-orange-400" },
-      
-      { icon: SiJenkins, name: "Jenkins", color: "text-red-400" },
-      { icon: SiGit, name: "Git", color: "text-orange-500" },
-    ],
-  },
-  {
-    title: "Tools & Testing",
-    skills: [
-      { icon: SiGithub, name: "GitHub", color: "text-white" },
-      { icon: SiVercel, name: "Vercel", color: "text-white" },
-      { icon: SiNetlify, name: "Netlify", color: "text-cyan-400" },
-      { icon: SiStreamlit, name: "Streamlit", color: "text-red-400" },
-      { icon: SiJest, name: "Jest", color: "text-red-500" },
-    ],
-  },
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { IconType } from 'react-icons';
+import { SiPython, SiPytorch, SiFastapi, SiReact, SiScikitlearn, SiDocker, SiPostgresql, SiTypescript, SiRust, SiCloudflare } from 'react-icons/si';
+import { FiCloud, FiCpu, FiLayers, FiBox, FiChevronDown } from 'react-icons/fi';
+
+interface Tool { name: string; project: string; icon: IconType; color: string; }
+interface Tier { label: string; accent: string; tools: Tool[]; }
+
+const tiers: Tier[] = [
+  { label: 'I build with this', accent: 'var(--accent)', tools: [
+    { name: 'Python', project: 'Every ML project', icon: SiPython, color: '#3776AB' },
+    { name: 'PyTorch / TensorFlow', project: 'Spam detection, chatbot NLP', icon: SiPytorch, color: '#EE4C2C' },
+    { name: 'FastAPI', project: 'Phamax chatbot backend', icon: SiFastapi, color: '#009688' },
+    { name: 'React / Next.js', project: 'This portfolio, AI Summarizer', icon: SiReact, color: '#61DAFB' },
+    { name: 'scikit-learn', project: 'VOIS spam classifier', icon: SiScikitlearn, color: '#F7931E' },
+  ]},
+  { label: "I'm comfortable here", accent: 'var(--accent-warm)', tools: [
+    { name: 'Docker / CI/CD', project: 'VOIS deployment pipeline', icon: SiDocker, color: '#2496ED' },
+    { name: 'PostgreSQL / MongoDB', project: 'Multiple projects', icon: SiPostgresql, color: '#4169E1' },
+    { name: 'Azure / Cloudflare', project: 'Phamax, TaskFlow AI', icon: FiCloud, color: '#0078D4' },
+    { name: 'TypeScript', project: 'TaskFlow AI, this site', icon: SiTypescript, color: '#3178C6' },
+    { name: 'LangChain / RAG', project: 'Class projects, experiments', icon: FiLayers, color: '#059669' },
+  ]},
+  { label: 'Learning next', accent: '#059669', tools: [
+    { name: 'Rust', project: 'Side projects', icon: SiRust, color: '#CE422B' },
+    { name: 'MLOps at scale', project: 'W&B, DVC', icon: FiBox, color: '#FFBE00' },
+    { name: 'Multimodal models', project: 'Coursework', icon: FiCpu, color: '#8b5cf6' },
+    { name: 'Edge AI', project: 'CF Workers AI', icon: SiCloudflare, color: '#F38020' },
+  ]},
+];
+
+const readings = [
+  { title: 'Attention Is All You Need', author: 'Vaswani et al., 2017', note: 'Transformers obsoleted the recurrent architectures I\'d spent months learning.' },
+  { title: 'The Alignment Problem', author: 'Brian Christian', note: '95% accurate chatbot = wrong for 1 in 20 patients. Changed how I evaluate.' },
+  { title: 'Designing Data-Intensive Apps', author: 'Kleppmann', note: 'Most ML problems are distributed systems problems in disguise.' },
+  { title: 'The Bitter Lesson', author: 'Sutton, 2019', note: 'General methods + compute beat clever hand-engineering.' },
+  { title: 'SE at Google', author: 'Winters et al.', note: 'Code is a liability. Changed how I approach production ML.' },
+  { title: 'Karpathy\'s blog', author: 'karpathy.github.io', note: '"Recipe for Training NNs" — most practical ML advice anywhere.' },
 ];
 
 export default function Skills() {
+  const [showAll, setShowAll] = useState(false);
+  const visible = showAll ? readings : readings.slice(0, 2);
+
   return (
-    <section id="skills" className="py-20 px-6 relative">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-5xl font-bold mb-4 text-center">
-            <span className="bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Tech Arsenal
-            </span>
-          </h2>
-          <div className="w-20 h-1 bg-linear-to-r from-purple-500 to-blue-500 mx-auto mb-4 rounded-full" />
-          <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
-            Technologies and tools I use to bring ideas to life
-          </p>
+    <section id="toolkit" className="py-24 md:py-32 px-6 bg-background-alt/50">
+      <div className="max-w-5xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="mb-16">
+          <p className="section-label mb-3">Skills</p>
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground tracking-tight">Toolkit</h2>
+          <div className="editorial-rule mt-6 w-24" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className="relative p-6 rounded-2xl bg-linear-to-br from-gray-900/50 to-gray-800/50 border border-gray-700/50 backdrop-blur-sm hover:border-purple-500/50 transition-all group"
-            >
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-linear-to-br from-purple-600/0 to-blue-600/0 group-hover:from-purple-600/10 group-hover:to-blue-600/10 rounded-2xl transition-all" />
-
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-linear-to-r from-purple-500 to-blue-500" />
-                  {category.title}
-                </h3>
-
-                <div className="grid grid-cols-3 gap-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <motion.div
-                      key={skill.name}
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{
-                        duration: 0.15,
-                        delay: categoryIndex * 0.1 + skillIndex * 0.05,
-                      }}
-                      whileHover={{ scale: 1.15, rotate: 5 }}
-                      className="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/50 hover:bg-gray-800 transition-all duration-150 group/skill cursor-pointer"
-                    >
-                      <skill.icon className={`text-3xl ${skill.color} transition-all duration-150 group-hover/skill:scale-110`} />
-                      <span className="text-xs text-gray-400 text-center group-hover/skill:text-white transition-colors duration-150">
-                        {skill.name}
-                      </span>
-                    </motion.div>
-                  ))}
+        <div className="mb-24">
+          <p className="section-label mb-10">Proficiency Map</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {tiers.map((tier, ti) => (
+              <motion.div key={tier.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: ti * 0.1 }} viewport={{ once: true }} className="paper-card p-6">
+                <div className="flex items-center gap-3 mb-5 pb-4 border-b border-border-light">
+                  <span className="w-3 h-3 rounded-full shrink-0" style={{ background: tier.accent }} />
+                  <p className="text-sm font-bold text-foreground">{tier.label}</p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+                <div className="space-y-4">
+                  {tier.tools.map((t) => { const I = t.icon; return (
+                    <div key={t.name} className="flex items-start gap-3">
+                      <I size={18} className="shrink-0 mt-0.5" style={{ color: t.color }} />
+                      <div>
+                        <p className="text-[0.88rem] font-medium text-foreground leading-tight">{t.name}</p>
+                        <p className="text-[0.7rem] text-muted font-mono mt-0.5">{t.project}</p>
+                      </div>
+                    </div>
+                  ); })}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {/* Additional Skills - GenAI & Advanced ML */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-12 p-6 rounded-2xl bg-linear-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/20 backdrop-blur-sm"
-        >
-          <h3 className="text-xl font-bold text-white mb-4 text-center">GenAI & Advanced Technologies:</h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {["LangChain", "OpenAI API", "GPT-4", "DALL-E", "Stable Diffusion", "Hugging Face", "Vector Databases", "RAG", "LLM Fine-tuning", "Prompt Engineering", "Azure OpenAI", "Vertex AI", "Anthropic Claude", "Embedding Models", "Semantic Search"].map((skill, index) => (
-              <motion.span
-                key={skill}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ scale: 1.1 }}
-                className="px-4 py-2 rounded-full bg-linear-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30 text-gray-300 text-sm hover:border-purple-500/50 hover:text-white transition-all cursor-default"
-              >
-                {skill}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
+        <div>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="mb-10">
+            <p className="section-label mb-3">Intellectual influences</p>
+            <h3 className="font-serif text-2xl text-foreground tracking-tight">Reading List</h3>
+            <p className="text-sm text-secondary mt-2 max-w-lg">Papers and books that shaped how I build systems.</p>
+          </motion.div>
 
-        {/* Additional Full-Stack & DevOps Skills */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-6 p-6 rounded-2xl bg-linear-to-r from-green-900/20 to-teal-900/20 border border-green-500/20 backdrop-blur-sm"
-        >
-          <h3 className="text-xl font-bold text-white mb-4 text-center">Full-Stack & MLOps:</h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {["REST APIs", "Microservices", "WebSockets", "JWT Auth", "OAuth 2.0", "CI/CD Pipelines", "GitHub Actions", "Nginx", "Redis", "RabbitMQ", "Kafka", "MLflow", "DVC", "Weights & Biases", "Model Deployment", "A/B Testing", "Feature Engineering", "Hyperparameter Tuning", "Model Monitoring"].map((skill, index) => (
-              <motion.span
-                key={skill}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ scale: 1.1 }}
-                className="px-4 py-2 rounded-full bg-linear-to-r from-green-600/20 to-teal-600/20 border border-green-500/30 text-gray-300 text-sm hover:border-green-500/50 hover:text-white transition-all cursor-default"
-              >
-                {skill}
-              </motion.span>
-            ))}
+          <div className="grid md:grid-cols-2 gap-6">
+            <AnimatePresence mode="popLayout">
+              {visible.map((item, i) => (
+                <motion.div key={item.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.4, delay: i * 0.06 }} layout className="paper-card p-6">
+                  <div className="flex items-start gap-4">
+                    <span className="font-serif text-3xl text-accent/20 leading-none mt-1 select-none shrink-0">{readings.indexOf(item) + 1}</span>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground mb-0.5">{item.title}</p>
+                      <p className="font-mono text-[0.6rem] text-muted tracking-wider mb-2">{item.author}</p>
+                      <p className="text-[0.85rem] text-secondary leading-relaxed">{item.note}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
-        </motion.div>
+
+          {readings.length > 2 && (
+            <div className="mt-8 text-center">
+              <button onClick={() => setShowAll(!showAll)} className="inline-flex items-center gap-2 text-accent text-[0.8rem] font-mono tracking-wider hover:underline underline-offset-4 cursor-pointer">
+                {showAll ? 'Show less' : `Show all ${readings.length}`}
+                <FiChevronDown size={14} className={`transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`} />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
