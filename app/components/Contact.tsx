@@ -75,11 +75,11 @@ export default function Contact() {
             <div className="grid md:grid-cols-2 gap-5">
               <div>
                 <label htmlFor="from_name" className="block text-[0.75rem] font-mono text-muted tracking-wider uppercase mb-2">Name</label>
-                <input id="from_name" name="from_name" type="text" required className="w-full bg-transparent border-b border-border focus:border-accent text-foreground text-[0.9rem] py-2.5 outline-none transition-colors placeholder:text-muted" placeholder="Your name" />
+                <input id="from_name" name="name" type="text" required className="w-full bg-transparent border-b border-border focus:border-accent text-foreground text-[0.9rem] py-2.5 outline-none transition-colors placeholder:text-muted" placeholder="Your name" />
               </div>
               <div>
                 <label htmlFor="email" className="block text-[0.75rem] font-mono text-muted tracking-wider uppercase mb-2">Email</label>
-                <input id="email" name="reply_to" type="email" required className="w-full bg-transparent border-b border-border focus:border-accent text-foreground text-[0.9rem] py-2.5 outline-none transition-colors placeholder:text-muted" placeholder="your@email.com" />
+                <input id="email" name="email" type="email" required className="w-full bg-transparent border-b border-border focus:border-accent text-foreground text-[0.9rem] py-2.5 outline-none transition-colors placeholder:text-muted" placeholder="your@email.com" />
               </div>
             </div>
             <div>
