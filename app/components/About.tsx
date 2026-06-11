@@ -17,12 +17,12 @@ const timelineEvents = [
   {
     year: '2024',
     label: 'First system real people relied on',
-    note: 'Built the medical chatbot at Phamax.ch end-to-end — FastAPI backend, BERT intent classification, React/Teams frontend, Azure deployment. Over 5,000 users before I left.',
+    note: 'Built the medical chatbot at Phamax end-to-end — FastAPI backend, BERT intent classification, React/Teams frontend, AWS deployment. Over 5,000 users before I left.',
   },
   {
-    year: '2024',
-    label: 'Grad school + open source',
-    note: 'Started my Master\'s at University of Cincinnati. Built TaskFlow AI on Cloudflare\'s edge stack, an AI Summarizer with React + Node.js, and a DALL-E clone with full MERN stack. GPA: 3.93.',
+    year: '2025',
+    label: 'Scaling document extraction',
+    note: 'At Strategibuilder, automated intelligent document extraction pipelines processing 1,000+ documents/month using AWS Textract and deploying distributed microservices. Reduced processing time by 60%.',
   },
 ];
 

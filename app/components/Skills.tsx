@@ -11,24 +11,23 @@ interface Tier { label: string; accent: string; tools: Tool[]; }
 
 const tiers: Tier[] = [
   { label: 'I build with this', accent: 'var(--accent)', tools: [
-    { name: 'Python', project: 'Every ML project', icon: SiPython, color: '#3776AB' },
-    { name: 'PyTorch / TensorFlow', project: 'Spam detection, chatbot NLP', icon: SiPytorch, color: '#EE4C2C' },
-    { name: 'FastAPI', project: 'Phamax chatbot backend', icon: SiFastapi, color: '#009688' },
-    { name: 'React / Next.js', project: 'This portfolio, AI Summarizer', icon: SiReact, color: '#61DAFB' },
-    { name: 'scikit-learn', project: 'VOIS spam classifier', icon: SiScikitlearn, color: '#F7931E' },
+    { name: 'Python / FastAPI', project: 'Agentic System, Phamax backend', icon: SiFastapi, color: '#009688' },
+    { name: 'React / TypeScript', project: 'Content Engine, Strategibuilder UI', icon: SiReact, color: '#61DAFB' },
+    { name: 'Docker / CI/CD', project: 'Automated deployment pipelines', icon: SiDocker, color: '#2496ED' },
+    { name: 'AWS Cloud', project: 'ECS, S3, Lambda, CloudFront', icon: FiCloud, color: '#FF9900' },
+    { name: 'PostgreSQL / SQL', project: 'Data pipelines, pgvector retrieval', icon: SiPostgresql, color: '#4169E1' },
   ]},
   { label: "I'm comfortable here", accent: 'var(--accent-warm)', tools: [
-    { name: 'Docker / CI/CD', project: 'VOIS deployment pipeline', icon: SiDocker, color: '#2496ED' },
-    { name: 'PostgreSQL / MongoDB', project: 'Multiple projects', icon: SiPostgresql, color: '#4169E1' },
-    { name: 'Azure / Cloudflare', project: 'Phamax, TaskFlow AI', icon: FiCloud, color: '#0078D4' },
-    { name: 'TypeScript', project: 'TaskFlow AI, this site', icon: SiTypescript, color: '#3178C6' },
-    { name: 'LangChain / RAG', project: 'Class projects, experiments', icon: FiLayers, color: '#059669' },
+    { name: 'LangChain / RAG', project: 'Agentic workflows, NLP', icon: FiLayers, color: '#059669' },
+    { name: 'Node.js / Express', project: 'Content Engine backend', icon: FiCpu, color: '#339933' },
+    { name: 'TensorFlow / PyTorch', project: 'Spam detection, Video analytics', icon: SiPytorch, color: '#EE4C2C' },
+    { name: 'Kubernetes / Jenkins', project: 'Infrastructure orchestration', icon: SiDocker, color: '#326CE5' },
+    { name: 'Observability', project: 'Dagster, Langfuse, CloudWatch', icon: FiBox, color: '#7662F6' },
   ]},
   { label: 'Learning next', accent: '#059669', tools: [
-    { name: 'Rust', project: 'Side projects', icon: SiRust, color: '#CE422B' },
-    { name: 'MLOps at scale', project: 'W&B, DVC', icon: FiBox, color: '#FFBE00' },
-    { name: 'Multimodal models', project: 'Coursework', icon: FiCpu, color: '#8b5cf6' },
-    { name: 'Edge AI', project: 'CF Workers AI', icon: SiCloudflare, color: '#F38020' },
+    { name: 'Rust', project: 'High performance systems', icon: SiRust, color: '#CE422B' },
+    { name: 'Advanced MLOps', project: 'Scaling model deployment', icon: FiBox, color: '#FFBE00' },
+    { name: 'Edge AI / WebAssembly', project: 'On-device inference', icon: SiCloudflare, color: '#F38020' },
   ]},
 ];
 

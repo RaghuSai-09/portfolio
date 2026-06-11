@@ -63,6 +63,72 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: 'Agentic Network Automation & Decision Intelligence System',
+    context: 'Production · Backend & ML Pipeline',
+    bullets: [
+      'Built a network automation-grade multi-agent reasoning system achieving sub-500ms latency using Python toolcalling agents that decompose complex operational queries and synthesise interpretable structured decisions – deployed on Linux-based infrastructure.',
+      'Engineered FastAPI + Pydantic v2 REST API backend with PostgreSQL/pgvector for semantic vector retrieval over large-scale distributed operational datasets, achieving production-grade scalable and secure software design.',
+      'Orchestrated agent workflows with Dagster and enabled full LLM observability via Langfuse network monitoringstyle tracing, reducing pipeline debugging time by 50% via CI/CD- automated deployment on Docker containers.'
+    ],
+    architecture: [
+      { id: 'agents', label: 'Multi-Agent System', note: 'Python tool-calling agents decomposing complex queries with sub-500ms latency.' },
+      { id: 'api', label: 'FastAPI Backend', note: 'Pydantic v2 REST API with PostgreSQL/pgvector for semantic vector retrieval.' },
+      { id: 'orch', label: 'Orchestration', note: 'Dagster for workflows, Langfuse for LLM observability and tracing.' },
+      { id: 'deploy', label: 'Deployment', note: 'Docker containerized via CI/CD on Linux infrastructure.' }
+    ],
+    metrics: [
+      { label: 'Latency', value: '<500ms' },
+      { label: 'Debug time', value: '-50%' }
+    ],
+    tech: ['Python', 'FastAPI', 'Pydantic v2', 'LangChain', 'pgvector', 'Dagster', 'Langfuse', 'PostgreSQL', 'Docker', 'Linux'],
+    link: null,
+    github: null,
+  },
+  {
+    title: 'Automated Content Synthesis Engine',
+    context: 'Full Stack · Distributed Deployment',
+    bullets: [
+      'Engineered a full-stack application with React / JavaScript frontend, REST API backend, semantic response caching, and streaming outputs – reducing latency by 35% and API costs by 28%.',
+      'Maintained 99% uptime via Jenkins-style CI/CD automation (GitHub Actions), Docker containerisation, and TanStack Query for real-time server-state synchronisation in a distributed deployment environment.'
+    ],
+    architecture: [
+      { id: 'frontend', label: 'React Frontend', note: 'React/TypeScript with TanStack Query for real-time state synchronization.' },
+      { id: 'backend', label: 'Node.js Backend', note: 'REST API with semantic response caching and streaming outputs.' },
+      { id: 'llm', label: 'OpenAI GPT-4', note: 'Integrated language model for content synthesis.' },
+      { id: 'cicd', label: 'CI/CD & Deploy', note: 'GitHub Actions automation, Docker containerized environment.' }
+    ],
+    metrics: [
+      { label: 'Latency', value: '-35%' },
+      { label: 'API costs', value: '-28%' },
+      { label: 'Uptime', value: '99%' }
+    ],
+    tech: ['React', 'TypeScript', 'TanStack Query', 'Node.js', 'REST API', 'OpenAI GPT-4', 'Docker', 'GitHub Actions'],
+    link: null,
+    github: null,
+  },
+  {
+    title: 'Real-Time Network Monitoring & Predictive Analytics Suite',
+    context: 'ML Pipeline · Computer Vision & NLP',
+    bullets: [
+      'Achieved 92% detection accuracy on live video feeds via an optimised CNN pipeline in OpenCV and TensorFlow on Linux with 40% lower inference latency – architecturally suitable for real-time monitoring and industrial operations.',
+      'Improved document classification F1-score by 12% via NLP feature engineering (TF-IDF, logistic regression) and reached 98% accuracy on MNIST using Python deep CNNs with dropout – all pipelines managed under Linux with SQL-backed data storage.'
+    ],
+    architecture: [
+      { id: 'cv', label: 'Computer Vision', note: 'Optimized CNN pipeline with OpenCV and TensorFlow for live video feeds.' },
+      { id: 'nlp', label: 'NLP Pipeline', note: 'TF-IDF and logistic regression for document classification.' },
+      { id: 'data', label: 'Data Storage', note: 'SQL-backed data storage managed under Linux.' }
+    ],
+    metrics: [
+      { label: 'Detection', value: '92%' },
+      { label: 'Inference', value: '-40%' },
+      { label: 'F1-score', value: '+12%' },
+      { label: 'Accuracy', value: '98%' }
+    ],
+    tech: ['Python', 'TensorFlow', 'OpenCV', 'NLP', 'scikit-learn', 'SQL', 'Linux', 'Docker'],
+    link: null,
+    github: null,
+  },
+  {
     title: 'Medical Chatbot',
     context: 'Phamax.ch · Production · 5,000+ users',
     bullets: [

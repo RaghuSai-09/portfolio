@@ -5,35 +5,45 @@ import { FiBriefcase, FiBookOpen } from 'react-icons/fi';
 
 const experiences = [
   {
-    company: 'Phamax.ch',
-    role: 'Full Stack Developer',
-    period: 'Jul 2024 – Dec 2024',
+    company: 'Strategibuilder',
+    role: 'Full Stack Software Engineer',
+    period: 'Nov 2025 – Present',
     bullets: [
-      'Built AI-powered medical chatbot from scratch serving 5,000+ users across web and Microsoft Teams, processing 50k+ queries daily',
-      'Rebuilt backend from Flask to async FastAPI with Redis caching — reduced query timeout rates from 30% to under 2%',
-      'Fine-tuned BERT on medical domain data with spaCy NER — improved semantic accuracy by 30%, reaching 92% user satisfaction',
-      'Engineered ETL pipelines with Azure Data Factory, eliminating 10+ hours/week of manual reporting',
+      'Automated intelligent document extraction pipeline processing 1,000+ documents/month using AWS Textract, Lambda, and Pydantic-validated REST APIs deployed as containerised microservices on Linux-based AWS ECS Fargate – reducing ACORD insurance form processing time by 60% and completing the full software development life cycle from design to deployment.',
+      'Designed and deployed a distributed, async microservices backbone using S3, SQS, and CloudWatch network monitoring and observability, fully automated via Jenkins-compatible CI/CD pipelines (GitHub Actions) to AWS Elastic Beanstalk – enabling zero-downtime weekly releases and real-time alerting on service health.',
+      'Delivered content globally via CDN (AWS CloudFront) for a 15-component WCAG-compliant React / TypeScript library with Zod schema validation – reducing UI integration bugs by 35% and improving QA cycle efficiency.',
+      'Engineered production-grade secure software: JWT + RBAC authentication with AWS Cognito, PostgreSQL (RDS) backed by API Gateway, structured audit logging, and SQL-driven access controls – achieving zero security incidents across 3 role tiers.',
     ],
   },
   {
-    company: 'VOIS',
+    company: 'Phamax – Healthcare AI Platform',
+    role: 'Full Stack Software Engineer',
+    period: 'Jun 2024 – Dec 2024',
+    bullets: [
+      'Designed, developed, tested, and deployed an AI-powered automation-style workflow system serving 5,000+ users, using Python NLP pipelines and LLM reasoning chains on Linux-based AWS infrastructure – reducing patient intake manual processing by 40% with zero human-in-the-loop intervention.',
+      'Architected automated network monitoring and reporting pipelines on AWS (CloudWatch, SQS) with structured observability and scheduled execution, saving 10+ engineering hours/week across 3 clinical teams – applying DevOps practices to operational pipeline reliability.',
+      'Maintained 99.9% uptime on scalable, secure software by implementing OAuth 2.0-secured REST APIs with comprehensive audit logging, role-based SQL data access controls, and full HIPAA compliance.',
+      'Improved agent decision accuracy by 30% through iterative semantic analysis pipelines using TensorFlow and PyTorch, collaborating across global cross-functional stakeholder teams.',
+    ],
+  },
+  {
+    company: '_VOIS – Vodafone Intelligent Solutions',
     role: 'Software Engineer',
-    period: 'Jun 2022 – Jun 2023',
+    period: 'Jun 2022 – Nov 2022',
     bullets: [
-      'Designed and shipped enterprise spam detection system processing 50,000+ emails daily with 95% precision and 93% recall',
-      'Built ensemble voting classifier (NB + LR + RF) with TF-IDF and Word2Vec features — 18% improvement over baseline',
-      'Containerized ML pipeline with Docker + Jenkins CI/CD + MLflow versioning — reduced deployment time by 60%',
-      'Built real-time Streamlit + React monitoring dashboard; maintained 99.5% uptime. Published peer-reviewed research paper',
+      'Built end-to-end Python ML data pipelines on Linux infrastructure within Vodafone’s global telecommunications carrier environment, processing 50,000+ network-scale records with SQL-driven feature extraction – achieving 95% precision in automated spam classification across carrier communication systems.',
+      'Developed and deployed a real-time network monitoring and auditing tool (Streamlit + AWS) enabling Vodafone’s non-technical operations teams to autonomously monitor network automation pipeline outputs – reducing manual review cycles by 40%.',
+      'Decreased SQL and Pandas pipeline processing time by 25% by profiling and resolving bottlenecks across 4 production distributed workflows on Linux-based cloud infrastructure.',
+      'Published peer-reviewed research on comparative Python ML algorithm performance (Advances in Document Intelligence and Content Classification, 2022), contributed to global collaboration with Vodafone engineering teams across multiple regions.',
     ],
   },
   {
-    company: '1Stop.ai (Personifwy)',
-    role: 'AI Engineer',
-    period: 'Oct 2021 – May 2022',
+    company: '1Stop.ai / Personifwy',
+    role: 'AI / ML Engineer',
+    period: 'Oct 2020 – Jun 2021',
     bullets: [
-      'Applied ResNet, VGG16, and MobileNet with custom augmentation — reduced overfitting by 25% on limited training data',
-      'Performed EDA on 500K+ records; identified systematic labeling errors — improved model performance by 15%',
-      'Built end-to-end ML pipelines across computer vision, NLP, and deep learning on 100K+ data samples',
+      'Achieved 90%+ object recognition accuracy by developing and deploying CNN models using TensorFlow and PyTorch on Linux environments with reproducible NumPy/Pandas feature extraction pipelines – completing the full SDLC from research through production deployment.',
+      'Standardised preprocessing workflows and documented 5 deployed model architectures, accelerating model experimentation by 20% through reusable hyperparameter tuning strategies across distributed compute environments.',
     ],
   },
 ];
@@ -41,16 +51,16 @@ const experiences = [
 const education = [
   {
     degree: 'Master of Engineering, Computer Science',
-    school: 'University of Cincinnati',
-    period: 'Aug 2024 – Present',
-    gpa: '3.93/4.0',
+    school: 'University of Cincinnati, Cincinnati, OH',
+    period: 'Aug 2024 – May 2026',
+    gpa: '3.93 / 4.0',
     coursework: 'NLP, Advanced ML, Distributed Systems, Advanced Algorithms',
   },
   {
     degree: 'Bachelor of Technology, Computer Science',
-    school: 'SRM University – AP',
+    school: 'SRM University AP, India',
     period: 'Sep 2020 – May 2024',
-    gpa: '3.75/4.0',
+    gpa: '3.75 / 4.0',
     coursework: 'AI, Machine Learning, Deep Learning, Data Mining',
   },
 ];
