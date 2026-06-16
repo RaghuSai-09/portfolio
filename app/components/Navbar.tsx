@@ -95,7 +95,7 @@ export default function Navbar() {
               ))}
 
               <a
-                href="/resume.pdf"
+                href="/raghusai_resume.pdf"
                 download="Raghu_Sai_Kosana_Resume.pdf"
                 className="text-[0.8rem] text-secondary hover:text-accent transition-colors duration-200 flex items-center gap-1.5"
               >
@@ -155,7 +155,7 @@ export default function Navbar() {
                 </button>
               ))}
               <a
-                href="/resume.pdf"
+                href="/raghusai_resume.pdf"
                 download="Raghu_Sai_Kosana_Resume.pdf"
                 className="flex items-center gap-2 text-secondary hover:text-accent transition-colors py-2.5 text-sm border-b border-border-light"
               >

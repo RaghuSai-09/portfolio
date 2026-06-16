@@ -127,7 +127,7 @@ export default function Contact() {
             <FiArrowUpRight size={16} className="text-muted group-hover:text-accent transition-colors" />
           </a>
 
-          <a href="/resume.pdf" download="Raghu_Sai_Kosana_Resume.pdf" className="paper-card p-5 flex items-center justify-between group">
+          <a href="/raghusai_resume.pdf" download="Raghu_Sai_Kosana_Resume.pdf" className="paper-card p-5 flex items-center justify-between group">
             <div className="flex items-center gap-4">
               <span className="w-10 h-10 flex items-center justify-center border border-border-light group-hover:border-accent group-hover:bg-accent transition-all">
                 <FiDownload size={16} className="text-secondary group-hover:text-white transition-colors" />
