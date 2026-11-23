@@ -336,7 +336,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               MEng in Computer Science, University of Cincinnati (May 2026). I build end-to-end,
-              from LLM systems to the React frontends and FastAPI backends that serve
+              from LLM systems to the React frontends and FastAPI backends that serve{' '}
               <span className="highlight-text font-bold">thousands of users</span> in production.
             </motion.p>
 
