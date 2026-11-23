@@ -46,7 +46,7 @@ export default function Contact() {
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} viewport={{ once: true }} className="space-y-5 mb-14">
           <p className="text-base text-foreground/80 leading-[1.8] font-medium">
-            I&apos;m looking for full-time <span className="highlight-text">ML Engineer</span> or <span className="highlight-text">NLP Engineer</span> roles starting mid-2025.
+            I&apos;m open to full-time <span className="highlight-text">full-stack software engineering</span> roles with a <span className="highlight-text">GenAI focus</span>.
             The work that excites me most sits at the intersection of language understanding and production systems.
           </p>
           <p className="text-base text-secondary leading-[1.8]">

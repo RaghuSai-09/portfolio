@@ -24,6 +24,11 @@ const timelineEvents = [
     label: 'Scaling document extraction',
     note: 'At Strategibuilder, automated intelligent document extraction pipelines processing 1,000+ documents/month using AWS Textract and deploying distributed microservices. Reduced processing time by 60%.',
   },
+  {
+    year: '2026',
+    label: 'Agents driving the UI',
+    note: 'At Intellilake, enabling LLM agents to drive a multi-panel financial UI through a 100+ surface command taxonomy and a typed command path — so agent actions resolve through one tested pipeline instead of one-off handlers.',
+  },
 ];
 
 export default function About() {

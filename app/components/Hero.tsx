@@ -15,11 +15,11 @@ interface RevealSegment {
 
 const segments: RevealSegment[] = [
   { original: 'I spend my time', revealed: 'Three years of' },
-  { original: 'teaching machines', revealed: 'fine-tuning BERT,' },
-  { original: 'to understand language', revealed: 'building NLP pipelines' },
+  { original: 'teaching machines', revealed: 'shipping LLM systems,' },
+  { original: 'to understand language', revealed: 'building RAG pipelines' },
   { original: '—', revealed: '—' },
   { original: 'then shipping', revealed: 'React, FastAPI,' },
-  { original: 'the full-stack systems', revealed: 'Docker, Azure —' },
+  { original: 'the full-stack systems', revealed: 'AWS, Docker —' },
   { original: 'that real people', revealed: 'that 5,000+ users' },
   { original: 'depend on.', revealed: 'rely on daily.' },
 ];
@@ -264,7 +264,7 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              ML Engineer <span className="text-accent">·</span> Full-Stack Developer
+              Full-Stack Developer <span className="text-accent">·</span> GenAI Engineer
             </motion.h3>
 
             {/* Headline with reveal lens */}
@@ -335,9 +335,9 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Master&apos;s student at University of Cincinnati. I build end-to-end — from
-              training NLP models to deploying React frontends and FastAPI backends that
-              serve <span className="highlight-text font-bold">thousands of users</span> in production.
+              MEng in Computer Science, University of Cincinnati (May 2026). I build end-to-end,
+              from LLM systems to the React frontends and FastAPI backends that serve
+              <span className="highlight-text font-bold">thousands of users</span> in production.
             </motion.p>
 
             {/* Full-stack proof strip */}
@@ -351,7 +351,7 @@ export default function Hero() {
                 { label: 'ML/NLP', detail: 'PyTorch, BERT, scikit-learn' },
                 { label: 'Backend', detail: 'FastAPI, Node.js, PostgreSQL' },
                 { label: 'Frontend', detail: 'React, Next.js, Tailwind' },
-                { label: 'Infra', detail: 'Docker, Azure, Cloudflare' },
+                { label: 'Infra', detail: 'Docker, AWS, Cloudflare' },
               ].map((item) => (
                 <div key={item.label} className="flex items-baseline gap-2">
                   <span className="text-[0.7rem] font-semibold text-accent uppercase tracking-wider">{item.label}</span>
@@ -398,7 +398,7 @@ export default function Hero() {
               <div className="relative overflow-hidden rounded-sm group shadow-[3px_4px_16px_rgba(0,0,0,0.12)]">
                 <Image
                   src="/raghu.jpg"
-                  alt="Raghu Sai Kosana — ML Engineer and Full-Stack Developer"
+                  alt="Raghu Sai Kosana — Full-Stack Developer and GenAI Engineer"
                   width={320}
                   height={400}
                   className="object-cover w-full aspect-[4/5] grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700 scale-[1.02] group-hover:scale-100"

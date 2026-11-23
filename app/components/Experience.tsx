@@ -5,9 +5,21 @@ import { FiBriefcase, FiBookOpen } from 'react-icons/fi';
 
 const experiences = [
   {
+    company: 'Intellilake',
+    role: 'Software Engineer, AI Agents',
+    period: 'Jun 2026 – Present',
+    bullets: [
+      'Turned a sprawling UI map into an agent-ready contract by hardening a 100+ surface spatial taxonomy (command grammar, reach vs dependsOn.panels, structured env deps, frozen grammar) across top-bar, grid, reporting, left-rail, modals, and chat – producing reproducible, codegen-aligned surface recipes so agent drivability is contract-backed rather than ad-hoc prompts.',
+      'Built the agent to UI command path (emit and useAgentEvent, inbound toast.show and navigate with dimension targeting, shared command registry) so agent actions resolve through one typed pipeline with tests – routing toasts and navigation through typed EventProvider APIs for consistent, testable agent-driven UI control.',
+      'Made agent navigation data-aware by extending the command manifest with an optional dimension enum and wiring NavBar to apply workspace dimension – so agents open the correct entity context in one command.',
+      'Closed a multi-PR taxonomy program (UI-579 to UI-587 into UI-578) by shipping stacked slice PRs region by region (app menu, data-ops, grid/transform, reporting, left-rail, modals, right-rail/chat) for full-shell coverage without a single mega-diff – standardising JSON send and expect recipes, classifying planned and chat.* surfaces as undrivable, and claiming only allowlisted commands (toast.show, panel.open) for clearer wait/expect flows and fewer false success claims.',
+      'Shipped Galaxy canvas into the R&D centre workspace with state-preserved tab switching – extending the platform’s architecture playground for spatial UX experiments.',
+    ],
+  },
+  {
     company: 'Strategibuilder',
     role: 'Full Stack Software Engineer',
-    period: 'Nov 2025 – Present',
+    period: 'Nov 2025 – Jun 2026',
     bullets: [
       'Automated intelligent document extraction pipeline processing 1,000+ documents/month using AWS Textract, Lambda, and Pydantic-validated REST APIs deployed as containerised microservices on Linux-based AWS ECS Fargate – reducing ACORD insurance form processing time by 60% and completing the full software development life cycle from design to deployment.',
       'Designed and deployed a distributed, async microservices backbone using S3, SQS, and CloudWatch network monitoring and observability, fully automated via Jenkins-compatible CI/CD pipelines (GitHub Actions) to AWS Elastic Beanstalk – enabling zero-downtime weekly releases and real-time alerting on service health.',

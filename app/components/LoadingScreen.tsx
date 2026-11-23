@@ -53,7 +53,7 @@ export default function LoadingScreen({ onLoadingComplete }: { onLoadingComplete
           transition={{ delay: 0.3, duration: 0.5 }}
           className="font-mono text-[0.6rem] tracking-[0.25em] uppercase mb-8" style={{ color: '#a8a29e' }}
         >
-          ML Engineer · Full-Stack Developer
+          Full-Stack Developer · GenAI Engineer
         </motion.p>
 
         <div className="w-48 mx-auto">

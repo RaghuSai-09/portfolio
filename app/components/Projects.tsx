@@ -176,8 +176,8 @@ const projects: Project[] = [
       { label: 'Review reduction', value: '40%' },
     ],
     tech: ['Python', 'scikit-learn', 'Docker', 'MLflow', 'Streamlit'],
-    link: null,
-    github: null,
+    link: 'https://raghusai-09-streamlit-deployement-webapp-b7sfgc.streamlit.app/',
+    github: 'https://github.com/RaghuSai-09/streamlit_deployement',
   },
   {
     title: 'TaskFlow AI',
@@ -224,7 +224,7 @@ const projects: Project[] = [
     ],
     tech: ['React', 'Node.js', 'OpenAI API', 'MongoDB'],
     link: 'https://raghusai-09.github.io/AI_Summarizer/',
-    github: 'https://github.com/raghusai-09',
+    github: 'https://github.com/RaghuSai-09/AI_Summarizer',
   },
 ];
 
