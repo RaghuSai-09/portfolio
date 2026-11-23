@@ -28,8 +28,8 @@ function CurrentlyWorkingOn() {
         </span>
         <span className="hidden sm:block w-[1px] h-4 bg-border" />
         <p className="text-[0.85rem] text-secondary leading-relaxed">
-          Building a RAG pipeline for medical document retrieval — comparing Gemini 2.0 embeddings
-          against ada-002, with a React frontend and FastAPI backend for the demo.
+          At Intellilake, enabling LLM agents to drive a multi-panel financial UI through a
+          100+ surface command taxonomy and a typed agent to UI command path.
         </p>
       </div>
     </motion.div>

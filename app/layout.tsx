@@ -24,14 +24,14 @@ const siteUrl = "https://raghusai.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Raghu Sai Kosana — ML Engineer & Full-Stack Developer",
+    default: "Raghu Sai Kosana — Full-Stack Developer & GenAI Engineer",
     template: "%s | Raghu Sai Kosana",
   },
   description:
-    "Machine Learning Engineer and Full-Stack Developer building NLP systems, production chatbots, and end-to-end web applications. Master's student at University of Cincinnati. Previously at Phamax.ch (medical chatbot, 5,000+ users) and VOIS (spam detection, 50k emails/day). Python, React, FastAPI, PyTorch.",
+    "Full-stack developer and GenAI engineer building production LLM systems and end-to-end web applications. MEng in Computer Science, University of Cincinnati (May 2026). Software Engineer, AI Agents at Intellilake. Previously at Strategibuilder, Phamax (medical chatbot, 5,000+ users) and VOIS (spam detection, 50k emails/day). Python, React, FastAPI, PyTorch.",
   keywords: [
     "Raghu Sai Kosana",
-    "Machine Learning Engineer",
+    "GenAI Engineer",
     "Full-Stack Developer",
     "NLP Engineer",
     "Python Developer",
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Raghu Sai Kosana — ML Engineer & Full-Stack Developer",
+    title: "Raghu Sai Kosana — Full-Stack Developer & GenAI Engineer",
     description:
-      "Building NLP systems and full-stack applications. Medical chatbot for 5,000+ users. Spam detection processing 50k emails/day. Master's at UC.",
+      "Building production LLM systems and full-stack applications. AI agents driving a financial UI at Intellilake. Medical chatbot for 5,000+ users. MEng, UC (May 2026).",
     url: siteUrl,
     siteName: "Raghu Sai Kosana",
     locale: "en_US",
@@ -66,9 +66,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Raghu Sai Kosana — ML Engineer & Full-Stack Developer",
+    title: "Raghu Sai Kosana — Full-Stack Developer & GenAI Engineer",
     description:
-      "Building NLP systems and full-stack applications. Medical chatbot for 5,000+ users. Master's at UC.",
+      "Building production LLM systems and full-stack applications. Medical chatbot for 5,000+ users. MEng, UC (May 2026).",
   },
   robots: {
     index: true,
@@ -91,9 +91,9 @@ const jsonLd = {
   "@type": "Person",
   name: "Raghu Sai Kosana",
   url: siteUrl,
-  jobTitle: "Machine Learning Engineer & Full-Stack Developer",
+  jobTitle: "Software Engineer, AI Agents",
   description:
-    "ML Engineer building NLP systems and full-stack applications. Master's student at University of Cincinnati.",
+    "Full-stack developer and GenAI engineer building production LLM systems. MEng in Computer Science, University of Cincinnati (May 2026).",
   email: "kosanaraghusai@gmail.com",
   sameAs: [
     "https://github.com/raghusai-09",
@@ -115,6 +115,9 @@ const jsonLd = {
   knowsAbout: [
     "Machine Learning",
     "Natural Language Processing",
+    "RAG",
+    "LangChain",
+    "AWS",
     "Full-Stack Development",
     "Python",
     "React",
@@ -127,8 +130,8 @@ const jsonLd = {
     "Node.js",
   ],
   worksFor: {
-    "@type": "CollegeOrUniversity",
-    name: "University of Cincinnati",
+    "@type": "Organization",
+    name: "Intellilake",
   },
 };
 
